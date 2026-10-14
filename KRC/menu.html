@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Menu - KRC Ayam Guling</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div id="navbar"></div>
+
+
+    <main>
+
+        <section class="page-header">
+
+            <span>🍗 KRC MENU</span>
+
+            <h1>
+                Pilih Favoritmu
+            </h1>
+
+            <p>
+                Ayam guling, sambal, makanan tambahan
+                dan minuman KRC.
+            </p>
+
+        </section>
+
+
+        <!-- FILTER -->
+        <section class="menu-section">
+
+            <div class="menu-filter">
+
+                <button
+                    class="filter-btn active"
+                    data-category="all"
+                >
+                    Semua
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-category="ayam"
+                >
+                    Ayam
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-category="tambahan"
+                >
+                    Tambahan
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-category="sambal"
+                >
+                    Sambal
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-category="minuman"
+                >
+                    Minuman
+                </button>
+
+            </div>
+
+
+            <div
+                id="menu-container"
+                class="menu-grid"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-logo">
+            KRC
+        </div>
+
+        <p>
+            Rasa Istimewa Dari Ayam Pilihan.
+        </p>
+
+        <span>
+            © 2026 KRC Ayam Guling
+        </span>
+
+    </footer>
+
+
+    <script src="js/navbar.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
+</html>

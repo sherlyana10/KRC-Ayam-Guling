@@ -1,0 +1,486 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lokasi & Google Review | KRC Ayam Guling</title>
+
+    <meta
+        name="description"
+        content="Temukan lokasi KRC Ayam Guling dan lihat ulasan pelanggan."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .location-page-hero {
+            padding: 125px 6% 45px;
+            color: white;
+            background: linear-gradient(110deg, #17100d, #4a120e);
+        }
+
+        .location-page-hero span {
+            display: inline-block;
+            color: #ffaaa0;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .location-page-hero h1 {
+            max-width: 700px;
+            margin: 12px 0;
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(32px, 5vw, 54px);
+            line-height: 1.08;
+        }
+
+        .location-page-hero h1 strong {
+            color: #ff403b;
+        }
+
+        .location-page-hero p {
+            max-width: 520px;
+            color: #eee0d8;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .location-page-content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 22px 55px;
+        }
+
+        .location-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .location-info-card,
+        .map-card,
+        .review-detail-card {
+            padding: 25px;
+            background: #fffdfa;
+            border: 1px solid #eee2d5;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(48, 25, 12, .05);
+        }
+
+        .location-info-card h2,
+        .map-card h2,
+        .review-detail-card h2 {
+            margin: 10px 0;
+            font-family: "Montserrat", sans-serif;
+            font-size: 23px;
+            line-height: 1.2;
+        }
+
+        .location-label {
+            color: #d71920;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .8px;
+        }
+
+        .location-info-card p,
+        .map-card p,
+        .review-detail-card p {
+            color: #71675f;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .location-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .location-actions .btn {
+            font-size: 11px;
+        }
+
+        .map-placeholder {
+            min-height: 220px;
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            background: #f4e9dd;
+        }
+
+        .map-placeholder .map-icon {
+            font-size: 40px;
+        }
+
+        .map-placeholder p {
+            max-width: 300px;
+        }
+
+        .map-placeholder .btn {
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .review-detail-section {
+            margin-top: 28px;
+        }
+
+        .review-detail-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .review-score {
+            color: #ffb000;
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .review-score strong {
+            color: #d71920;
+            font-size: 17px;
+            letter-spacing: 0;
+        }
+
+        .location-note {
+            margin-top: 20px;
+            padding: 17px;
+            border-radius: 12px;
+            background: #fae8dc;
+            color: #5f3328;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .location-note strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .location-map-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            min-height: 48px;
+            margin-top: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            background: #d71920;
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .location-map-link:hover {
+            background: #a90f16;
+            transform: translateY(-2px);
+        }
+
+        .location-actions a,
+        .review-detail-card a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 767px) {
+            .location-page-hero {
+                padding: 100px 20px 30px;
+            }
+
+            .location-page-hero h1 {
+                font-size: 32px;
+            }
+
+            .location-page-hero p {
+                font-size: 12px;
+            }
+
+            .location-page-content {
+                padding: 22px 14px 35px;
+            }
+
+            .location-panel {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .location-info-card,
+            .map-card,
+            .review-detail-card {
+                padding: 18px;
+                border-radius: 12px;
+            }
+
+            .location-info-card h2,
+            .map-card h2,
+            .review-detail-card h2 {
+                font-size: 20px;
+            }
+
+            .map-placeholder {
+                min-height: 180px;
+            }
+
+            .review-detail-card {
+                align-items: flex-start;
+            }
+
+            .location-actions {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .location-actions .btn {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .location-map-link {
+                box-sizing: border-box;
+            }
+
+            .review-detail-card > div {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR OTOMATIS -->
+    <div id="navbar"></div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="location-page-hero">
+
+            <span>📍 KUNJUNGI KRC</span>
+
+            <h1>
+                Temukan <strong>KRC</strong><br>
+                Terdekat Denganmu
+            </h1>
+
+            <p>
+                Ingin menikmati Ayam Guling KRC?
+                Temukan lokasi kami dan lihat ulasan pelanggan
+                sebelum berkunjung.
+            </p>
+
+        </section>
+
+        <!-- INFORMASI LOKASI -->
+        <section class="location-page-content">
+
+            <div class="location-panel">
+
+                <!-- KARTU ALAMAT -->
+                <article class="location-info-card">
+
+                    <span class="location-label">
+                        📍 ALAMAT KRC
+                    </span>
+
+                    <h2>Lokasi Kami</h2>
+
+                    <p>
+                        Kunjungi KRC Ayam Guling dan nikmati
+                        ayam panggang favoritmu bersama keluarga
+                        atau teman.
+                    </p>
+
+                    <div class="location-actions">
+
+                        <a
+                            href="https://maps.app.goo.gl/UUqvDCMfaUV72bQt6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-primary"
+                        >
+                            Buka Google Maps →
+                        </a>
+
+                        <a
+                            href="index.html"
+                            class="btn btn-white"
+                        >
+                            Kembali ke Home
+                        </a>
+
+                    </div>
+
+                    <div class="location-note">
+                        <strong>Catatan:</strong>
+                        Klik tombol Google Maps untuk melihat
+                        lokasi KRC dan mendapatkan petunjuk arah.
+                    </div>
+
+                </article>
+
+                <!-- KARTU PETA -->
+                <article class="map-card">
+
+                    <span class="location-label">
+                        🗺️ PETA LOKASI
+                    </span>
+
+                    <h2>Petunjuk Arah</h2>
+
+                    <p>
+                        Mau berkunjung langsung ke KRC?
+                        Buka Google Maps untuk melihat lokasi
+                        dan mendapatkan petunjuk perjalanan.
+                    </p>
+
+                    <div class="map-placeholder">
+
+                        <span class="map-icon">📍</span>
+
+                        <p>
+                            Temukan lokasi KRC Ayam Guling
+                            dengan mudah melalui Google Maps.
+                        </p>
+
+                        <a
+                            href="https://maps.app.goo.gl/UUqvDCMfaUV72bQt6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="location-map-link"
+                        >
+                            🗺️ Lihat Lokasi & Petunjuk Arah →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- GOOGLE REVIEW -->
+            <section class="review-detail-section">
+
+                <article class="review-detail-card">
+
+                    <div>
+
+                        <span class="location-label">
+                            ⭐ GOOGLE REVIEW
+                        </span>
+
+                        <h2>Bagaimana Kata Mereka?</h2>
+
+                        <p>
+                            Lihat ulasan pelanggan untuk mengetahui
+                            pengalaman mereka menikmati KRC.
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <div class="review-score">
+                            ★★★★★
+                            <strong>4.8</strong>
+                        </div>
+
+                        <a
+                            href="https://maps.app.goo.gl/UUqvDCMfaUV72bQt6"
+                            class="btn btn-primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Lihat Google Review →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </section>
+
+        <!-- AJAKAN PESAN -->
+        <section class="order-cta">
+
+            <span>🔥 SUDAH SIAP MAKAN?</span>
+
+            <h2>Pesan Ayam Guling KRC</h2>
+
+            <p>
+                Nikmati rasa istimewa dari ayam pilihan.
+                Pesan sekarang dengan cara yang nyaman.
+            </p>
+
+            <div class="order-buttons">
+
+                <a
+                    href="pesan.html"
+                    class="order-button gojek"
+                >
+                    🛵
+
+                    <div>
+                        <small>Pesan lewat</small>
+                        <strong>GOJEK</strong>
+                    </div>
+                </a>
+
+                <a
+                    href="pesan.html"
+                    class="order-button whatsapp"
+                >
+                    💬
+
+                    <div>
+                        <small>Pesan lewat</small>
+                        <strong>WHATSAPP</strong>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">KRC</div>
+
+        <p>Rasa Istimewa Dari Ayam Pilihan.</p>
+
+        <span>© 2026 KRC Ayam Guling</span>
+
+    </footer>
+
+    <!-- JAVASCRIPT NAVBAR -->
+    <script src="js/navbar.js"></script>
+
+</body>
+</html>
+```
